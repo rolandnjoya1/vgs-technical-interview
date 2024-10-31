@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BB Dashboard</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Dashboard Styles */
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #1e90ff;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #4682b4;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .sidebar a:hover {
+            background-color: #5a9bd3;
+        }
+
+        /* Main Dashboard Area */
+        .main {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main h1 {
+            color: #1e90ff;
+            margin-bottom: 20px;
+        }
+
+        /* JSON Display Area */
+        .json-display {
+            width: 80%;
+            padding: 20px;
+            background-color: #e6f0ff;
+            border: 1px solid #cfe2ff;
+            border-radius: 10px;
+            min-height: 200px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            color: #333;
+        }
+
+        /* Button */
+        .fetch-button {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .fetch-button:hover {
+            background-color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Bobs Burgers Admin Dashboard</h2>
+        <a href="index.html">Home</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <h1>JSON Response Dashboard</h1>
+        <div id="jsonResponse" class="json-display">
+            <!-- JSON response will be displayed here -->
+        </div>
+        <button class="fetch-button" onclick="fetchJson()">Fetch JSON</button>
+    </div>
+
+    <!-- JavaScript to fetch JSON -->
+    <script>
+        async function fetchJson() {
+            const jsonResponseDiv = document.getElementById('jsonResponse');
+            jsonResponseDiv.textContent = "Loading...";
+
+            try {
+                const response = await fetch('QUERY_DYNAMO_API_ENDPOINT'); // Replace with your GET_API_GATEWAY_ENDPOINT
+                if(!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+                }
+                const data = await response.json();
+                jsonResponseDiv.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                jsonResponseDiv.textContent = `Failed to fetch data: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

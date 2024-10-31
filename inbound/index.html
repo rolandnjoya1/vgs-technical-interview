@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VGS Collect Payment Info Example</title>
+    <script nonce="static-nonce" src="https://js.verygoodvault.com/vgs-collect/2.18.0/vgs-collect.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class='container'>
+        <div class='window'>
+          <div class='order-info'>
+            <div class='order-info-content'>
+              <h2>Order Summary</h2>
+                      <div class='line'></div>
+              <table class='order-table'>
+                <tbody>
+                  <tr>
+                    <td><img src='assets/crispy-comte-cheeseburger.jpg' class='full-width'></img>
+                    </td>
+                    <td>
+                      <br> <span class='thin'>Bob's Burger</span>
+                      <br> Size: Deluxe<br> 
+                    </td>
+      
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class='price'>$19.99</div>
+                    </td>
+                  </tr>
+                </tbody>
+      
+              </table>
+              <div class='line'></div>
+              <table class='order-table'>
+                <tbody>
+                  <tr>
+                    <td><img src='assets/twice-fried-fries.jpg' class='full-width'></img>
+                    </td>
+                    <td>
+                      <br> <span class='thin'>Bob's Cajun Fries</span>
+                      <br>Size: Large<br> 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class='price'>$7.99</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class='total'>
+                <span style='float:left;'>
+                  <div class='thin dense'>TAX 6%</div>
+                  <div class='thin dense'>Delivery</div>
+                  TOTAL
+                </span>
+                <span style='float:right; text-align:right;'>
+                  <div class='thin dense'>$1.69</div>
+                  <div class='thin dense'>$4.95</div>
+                  $34.62
+                </span>
+              </div>
+      </div>
+      </div>
+              <div class='credit-info'>
+                <div class='credit-info-content'>
+                  <table class='half-input-table'>
+                    <tr><td>Please select your card: </td><td><div class='dropdown' id='card-dropdown'><div class='dropdown-btn' id='current-card'>Visa</div>
+                      <div class='dropdown-select'>
+                      <ul>
+                        <li>Master Card</li>
+                        <li>American Express</li>
+                        </ul></div>
+                      </div>
+                     </td></tr>
+                  </table>
+                  <img src='assets/Bobs_Burgers_logo.jpg' height='50' class='credit-card-image' id='credit-card-image'></img>
+                  Card Number
+                  <input class='input-field' id="cardNumber"></input>
+                  Card Holder
+                  <input class='input-field' id="cardHolder"></input>
+                  <table class='half-input-table'>
+                    <tr>
+                      <td> Expires
+                        <input class='input-field' id="expires"></input>
+                      </td>
+                      <td>CVC
+                        <input class='input-field' id="cvc"></input>
+                      </td>
+                    </tr>
+                  </table>
+                  <button class='pay-btn' id="checkout-btn">Checkout</button>
+                </div>
+              </div>
+            </div>
+      </div>
+  </body>
+</html>
